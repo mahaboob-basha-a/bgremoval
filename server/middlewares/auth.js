@@ -9,7 +9,7 @@ const authUser = async (req,resizeBy,next)=>{
             return res.json({success:false,message:'Not Authorized Login Again'})
         }
         const token_decode = jwt.decode(token, { complete: true})
-        req.body.clerkId = token_decode.clerkId
+        req.body.clerkId = token_decode.payload.clerkId
         next()
     } catch (error) {
         console.log(error.message)
